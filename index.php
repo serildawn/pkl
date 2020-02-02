@@ -1,34 +1,34 @@
 <?php
 session_start();
-if(isset($_SESSION["login"]))
-{
+if (isset($_SESSION["login"])) {
   header("location:all.php");
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
   <title>PT. Sinergi Informatika Semen Indonesia</title>
-    <link rel="icon" href="images/sisi.png">
+  <link rel="icon" href="images/sisi.png">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
 
-  <body>
-  
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
   <!-- SEARCH -->
   <div class="site-wrap">
     <div class="site-navbar bg-white py-2">
@@ -37,7 +37,7 @@ if(isset($_SESSION["login"]))
           <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
           <form action="#" method="post">
             <input type="text" class="form-control" placeholder="Masukkan Keyword Search . . .">
-          </form>  
+          </form>
         </div>
       </div>
 
@@ -48,11 +48,11 @@ if(isset($_SESSION["login"]))
               <a href="" class="js-logo-clone">PT. Sinergi Informatika Semen Indonesia</a>
             </div>
           </div>
-        
+
           <div class="main-nav d-none d-lg-block icons">
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
-              <li class="has-children ">
+                <li class="has-children ">
                   <!-- <a href="">By Category</a>
                   <ul class="dropdown">
                     <li><a href="jaket.php">Jacket & Hoodie</a></li>
@@ -60,13 +60,13 @@ if(isset($_SESSION["login"]))
                     <li><a href="tottebag.php">Female</a></li>
                     <li><a href="hats.php">Hats</a></li>
                   </ul> -->
-                  <li class="has-children ">
+                <li class="has-children ">
                 <li><a href="Login.php"> LOGIN <span class="icon-users"></span></a></li>
-                  <!-- <ul class="dropdown">
+                <!-- <ul class="dropdown">
                     <li><a href="auth/login.php">Login as Karyawan <span class="icon-users"></span></a></li>
                     <li><a href="auth/loginadmin.php">Login as Admin <span class="icon-wrench"></span></a></li> -->
-                  </ul>
-                </li>
+              </ul>
+              </li>
               </ul>
             </nav>
           </div>
@@ -79,17 +79,17 @@ if(isset($_SESSION["login"]))
         <div class="row">
           <div class="col-md-6 ml-auto order-md-2 align-self-start title-section mb-5 col-12 title-section text-center mb-5 col-12">
             <div class="site-block-cover-content">
-            <h1 class="site-navbar site-menu">Data karyawan frelance </h1>
-            <h2> PT. Sinergi Informatika Semen Indonesia</h2>
+              <h1 class="site-navbar site-menu">Data karyawan frelance </h1>
+              <h2> PT. Sinergi Informatika Semen Indonesia</h2>
             </div>
           </div>
-     
+
           <img src="images/sisi.jpg" height="100px" width="500px" alt="Image" class="img-fluid">
-        
+
         </div>
       </div>
     </div>
-  <!-- <section class="contact-section">
+    <!-- <section class="contact-section">
             <div class="container">
     
                 <div class="row">
@@ -196,82 +196,85 @@ if(isset($_SESSION["login"]))
         <div class="title-section mb-5">
           <h2 class="text-uppercase"><span class="d-block">Boost Your</span>Business Performance Now</h2>
         </div>
-        
-        
+
+
         <footer class="footer_part">
-        <div class="container">
+          <div class="container">
             <div class="row justify-content-between">
-                <div class="col-sm-6 col-lg-2">
-                    <div class="single_footer_part">
-                        <h4>About Us</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="male.php">Profile</a></li>
-                            <li><a href="female.html">Data Karyawan</a></li>
-                            <!-- <li><a href="hat.html">Hat</a></li>
+              <div class="col-sm-6 col-lg-2">
+                <div class="single_footer_part">
+                  <h4>About Us</h4>
+                  <ul class="list-unstyled">
+                    <li><a href="male.php">Profile</a></li>
+                    <li><a href="female.html">Data Karyawan</a></li>
+                    <!-- <li><a href="hat.html">Hat</a></li>
                             <li><a href="hoodie.html">Hoodie</a></li>
                             <li><a href="jaket.html">Jacket</a></li> -->
-                        </ul>
-                    </div>
+                  </ul>
                 </div>
-                <div class="col-sm-6 col-lg-2">
-                    <div class="single_footer_part">
-                        <h4>Hubungi Kami</h4>
-                        <ul class="list-unstyled">
-                            <li><a>+62-21-5213711 Ext.200</a></li>
-                            <li><a>ptsisi@sisi.id</a></li>
-                        </ul>
-                    </div>
-                    <a href= "https://facebook.com/Official.SISI" >
-                            <img src="images/fb.png" height="50px" width="50px"  class="img-fluid">
-                            </a>
-                            <a href="https://www.instagram.com/lifeatsisi/">
-                            <img src="images/ig.jpg" height="50px" width="50px"  class="img-fluid">
-                            </a>
-                            <a href = "https://www.linkedin.com/company/pt-sinergi-informatika-semen-indonesia">
-                            <img src="images/in.png" height="50px" width="50px"  class="img-fluid">
-                            </a>
-                            <a href = "https://www.youtube.com/channel/UChoRoF5e-XoxgdvGwo-b24A">
-                            <img src="images/yt.png" height="50px" width="50px"  class="img-fluid">
-                            </a>
+              </div>
+              <div class="col-sm-6 col-lg-2">
+                <div class="single_footer_part">
+                  <h4>Hubungi Kami</h4>
+                  <ul class="list-unstyled">
+                    <li><a>+62-21-5213711 Ext.200</a></li>
+                    <li><a>ptsisi@sisi.id</a></li>
+                  </ul>
                 </div>
-                    
-           
-                <div class="col-sm-6 col-lg-3">
-                    <div class="single_footer_part">
-                        <h4>PT. Sinergi Informatika Semen Indonesia</h4>
-                        <ul class="list-unstyled">
-                            <li><a>Jl. Tauchid - Tubanan TlogoBendung Gresik Jawa Timur</a></li>
-                            <li><a>61122</a></li>
-                        
-                            
-                        </ul>
-                    </div>
+                <a href="https://facebook.com/Official.SISI">
+                  <img src="images/fb.png" height="50px" width="50px" class="img-fluid">
+                </a>
+                <a href="https://www.instagram.com/lifeatsisi/">
+                  <img src="images/ig.jpg" height="50px" width="50px" class="img-fluid">
+                </a>
+                <a href="https://www.linkedin.com/company/pt-sinergi-informatika-semen-indonesia">
+                  <img src="images/in.png" height="50px" width="50px" class="img-fluid">
+                </a>
+                <a href="https://www.youtube.com/channel/UChoRoF5e-XoxgdvGwo-b24A">
+                  <img src="images/yt.png" height="50px" width="50px" class="img-fluid">
+                </a>
+              </div>
+
+
+              <div class="col-sm-6 col-lg-3">
+                <div class="single_footer_part">
+                  <h4>PT. Sinergi Informatika Semen Indonesia</h4>
+                  <ul class="list-unstyled">
+                    <li><a>Jl. Tauchid - Tubanan TlogoBendung Gresik Jawa Timur</a></li>
+                    <li><a>61122</a></li>
+
+
+                  </ul>
                 </div>
-           
-                </div>
-          <br>
-          <br>
-          <div class="col-md-12">
-            <p>
-           &copy;<script>document.write(new Date().getFullYear());</script> PT.SINERGI INFORMATIKA SEMEN INDONESIA
-            </p>
+              </div>
+
+            </div>
+            <br>
+            <br>
+            <div class="col-md-12">
+              <p>
+                &copy;<script>
+                  document.write(new Date().getFullYear());
+                </script> PT.SINERGI INFORMATIKA SEMEN INDONESIA
+              </p>
+            </div>
+
           </div>
-          
-        </div>
-    </footer>
-  </div>
-  </div>
-  <div>
+        </footer>
+      </div>
+    </div>
+    <div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/jquery-ui.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="js/aos.js"></script>
 
-  <script src="js/main.js"></script>
-    
-  </body>
+      <script src="js/main.js"></script>
+
+</body>
+
 </html>

@@ -1,9 +1,9 @@
-<?php 
-    include '../helper/Connection.php';
+<?php
+include '../helper/Connection.php';
 
-    $query = "SELECT * FROM paket WHERE deleted=0";
+$query = "SELECT * FROM paket WHERE deleted=0";
 
-    $result = mysqli_query($con,$query)or die(mysqli_error());
+$result = mysqli_query($con, $query) or die(mysqli_error());
 
 ?>
 <!DOCTYPE html>
@@ -62,10 +62,10 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-					<a href="../logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                </li>  
+                    <a href="../logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                </li>
             </ul>
-            
+
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -73,10 +73,10 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
                             <!-- /input-group -->
                         </li>
@@ -86,7 +86,7 @@
                                 <li>
                                     <a href="#">Data Paket</a>
                                 </li>
-                              
+
                                 <li>
                                     <a href="dataPemesanan.php">Data dataPemesanan</a>
                                 </li>
@@ -135,28 +135,27 @@
                                         <th>Harga</th>
                                         <th>Gambar</th>
                                         <th>Action</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
-								<?php  
-                                    while($row = mysqli_fetch_array($result)) 
-                                    {
-                                        $id= $row['id_paket'];
+                                    <?php
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        $id = $row['id_paket'];
                                         $nama = $row['nama'];
-                                        $deskripsi = $row['deskripsi']; 
-                                        $harga = $row['harga'];  
-                                        $gambar = $row['gambar'];        
-										echo "<tr>";
-										echo "<td>".$id."</td>";
-										echo "<td>".$nama."</td>";
-                                        echo "<td>".$deskripsi."</td>";
-                                        echo "<td>".$harga."</td>";
-                                        echo "<td><img src='../images/".$row["gambar"]."'></td>";
-										echo "<td><a class='btn btn-warning' href='../update/edit_paket.php?id_paket=$row[id_paket]'>Edit</a>
-                                        <a class='btn btn-warning' href='../Action/actionDeletePaket.php?id_paket=$row[id_paket]'>Hapus</a></td></tr>";			
-									}
-								?>	
+                                        $deskripsi = $row['deskripsi'];
+                                        $harga = $row['harga'];
+                                        $gambar = $row['gambar'];
+                                        echo "<tr>";
+                                        echo "<td>" . $id . "</td>";
+                                        echo "<td>" . $nama . "</td>";
+                                        echo "<td>" . $deskripsi . "</td>";
+                                        echo "<td>" . $harga . "</td>";
+                                        echo "<td><img src='../images/" . $row["gambar"] . "'></td>";
+                                        echo "<td><a class='btn btn-warning' href='../update/edit_paket.php?id_paket=$row[id_paket]'>Edit</a>
+                                        <a class='btn btn-warning' href='../Action/actionDeletePaket.php?id_paket=$row[id_paket]'>Hapus</a></td></tr>";
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -168,23 +167,23 @@
             </div>
         </div>
         <!-- /#page-wrapper -->
-        
-    <!-- jQuery -->
-    <script src="../admin/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- jQuery -->
+        <script src="../admin/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../admin/vendor/metisMenu/metisMenu.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../admin/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="../admin/vendor/raphael/raphael.min.js"></script>
-    <script src="../admin/vendor/morrisjs/morris.min.js"></script>
-    <script src="../admin/data/morris-data.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../admin/vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="../admin/dist/js/sb-admin-2.js"></script>
+        <!-- Morris Charts JavaScript -->
+        <script src="../admin/vendor/raphael/raphael.min.js"></script>
+        <script src="../admin/vendor/morrisjs/morris.min.js"></script>
+        <script src="../admin/data/morris-data.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../admin/dist/js/sb-admin-2.js"></script>
 
 </body>
 

@@ -23,4 +23,3 @@ if(isset($_POST ['Input']))
         echo "<script>alert('Nama Cust Sudah Terpakai!'); window.location = 'inputPemesanan.php';</script>";
     }
 }
-?>

@@ -5,4 +5,3 @@
     define("DB", "blitz"); // DB name
 
     // Tables
-?>

@@ -24,4 +24,3 @@ else
     echo "<br>";
     echo mysqli_error($conn);
 }
-?>

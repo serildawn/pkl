@@ -85,7 +85,7 @@ if (isset($_POST["ed_act"])) {
     <div class="col-md-8">
         <table class="table table-striped table-hover">
             <thead>
-                <tr>             
+                <tr>
                     <th>Nama</th>
                     <th>Tanggal</th>
                     <th>Aktifitas</th>
