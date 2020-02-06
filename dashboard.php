@@ -3,58 +3,14 @@
 include 'connect.php';
 include 'fungsi.php';
 
-
-if(isset($_POST["tipe_freelance"]))
-{
- $query2 = "
- SELECT * FROM freelance 
- WHERE tipe_freelance = '".$_POST["tipe_freelance"]."' 
- ORDER BY id_freelance ASC
- ";
- $statement = $connect->prepare($query2);
- $statement->execute();
- $results = $statement->fetchAll();
- foreach($results as $row)
- {
-  $output[] = array(
-   'nama'   => $row["nama"],
-   'status'  => floatval($row["status"])
-  );
- }
- echo json_encode($output);
-}
-
-
-
 $query2 = mysqli_query($con, "SELECT year FROM freelance GROUP BY tipe_freelance ASC");
 $freelance = mysqli_query($con, "SELECT * FROM freelance ORDER BY id_freelance ASC");
 $freelances =  mysqli_query($con, "SELECT * FROM freelance where now() < end_date - INTERVAL 2 WEEK");
-<<<<<<< HEAD
-$nonaktif = mysqli_query($con, "SELECT * FROM freelance where end_date <= now()");
-$minggu2 = mysqli_query($con, "SELECT * FROM freelance WHERE end_date BETWEEN now() AND CURDATE() + INTERVAL 14 DAY");
-$connect = mysqli_connect("localhost", "root", "", "morfeen");
-$query = "SELECT start_date, end_date, count(*) as number FROM freelance group by id_freelance";
-
-$queryFix = "SELECT
-              CASE
-                WHEN now() < end_date - INTERVAL 2 WEEK THEN 'Aktif'
-                WHEN end_date BETWEEN now() AND CURDATE() + INTERVAL 14 DAY THEN 'Kurang 2 Minggu'
-                WHEN now() > end_date THEN 'Non-Aktif'
-              END as status
-              , COUNT(*) as number
-              FROM morfeen.freelance f 
-              GROUP BY status";
-
-$result = mysqli_query($connect, $query);
-$resultFix = mysqli_query($connect, $queryFix);
-
-
-=======
 $nonaktif = mysqli_query($con, "SELECT * FROM freelance where now() > end_date");
-$minggu2 = mysqli_query($con, "SELECT * FROM freelance
-WHERE end_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 14 DAY");
-$connect = mysqli_connect("localhost", "root", "", "morfeen");
+$minggu2 = mysqli_query($con, "SELECT * FROM freelance WHERE end_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 14 DAY");
 $query = "SELECT start_date, end_date, count(*) as number FROM freelance group by id_freelance";
+
+$listTipeFreelance = mysqli_query($con, "SELECT * FROM morfeen.tipe_freelance tf");
 
 $queryFix = "SELECT
               CASE
@@ -66,11 +22,31 @@ $queryFix = "SELECT
               FROM morfeen.freelance f 
               GROUP BY status";
 
-$result = mysqli_query($connect, $query);
-$resultFix = mysqli_query($connect, $queryFix);
->>>>>>> 3f96ec27901d5bd7abff7fe108b14f225401d0ba
-?>
+$result = mysqli_query($con, $query);
+$resultFix = mysqli_query($con, $queryFix);
 
+if (isset($_POST['search_freelance']) && $_POST['search_freelance'] != "All") {
+  $search_freelance = $_POST['search_freelance'];
+
+  $queryFix = "SELECT
+              CASE
+                WHEN now() < end_date - INTERVAL 2 WEEK THEN 'Aktif'
+                WHEN end_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 14 DAY THEN 'Kurang 2 Minggu'
+                WHEN now() > end_date THEN 'Non-Aktif'
+              END as status
+              , COUNT(*) as number
+              FROM morfeen.freelance f 
+              WHERE tipe_freelance = '$search_freelance'
+              GROUP BY status";
+
+  $resultFix = mysqli_query($con, $queryFix);
+
+  $freelances =  mysqli_query($con, "SELECT * FROM freelance where now() < end_date - INTERVAL 2 WEEK AND tipe_freelance = '$search_freelance'");
+  $nonaktif = mysqli_query($con, "SELECT * FROM freelance where now() > end_date AND tipe_freelance = '$search_freelance'");
+  $minggu2 = mysqli_query($con, "SELECT * FROM freelance WHERE end_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 14 DAY AND tipe_freelance = '$search_freelance'");
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -267,182 +243,174 @@ $resultFix = mysqli_query($connect, $queryFix);
         <div class="container-fluid">
 
           <!-- Page Heading -->
-<<<<<<< HEAD
-         
-=======
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 
           </div>
->>>>>>> 3f96ec27901d5bd7abff7fe108b14f225401d0ba
 
-          <!-- Content Row -->
-          <div class="row">
-            
-            <!-- Content Row -->
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+          <script type="text/javascript">
+            google.charts.load('current', {
+              'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
 
-            <head>
-              <title>PT SINERGI INFORMATIKA SEMEN INDONESIA</title>
-<<<<<<< HEAD
-              <div class="col-md-3">
-                            <select name="tipe_freelance" class="form-control" id="tipe_freelance">
-                                <option value="">Select Type Freelance</option>
-                            <?php
-                            foreach($results as $row)
-                            {
-                                echo '<option value="'.$row["tipe_freelance"].'">'.$row["tipe_freelance"].'</option>';
-                            }
-                            ?>
-                            </select>
-                        </div>
-=======
->>>>>>> 3f96ec27901d5bd7abff7fe108b14f225401d0ba
-              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-              <script type="text/javascript">
-                google.charts.load('current', {
-                  'packages': ['corechart']
-                });
-                google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable([
+                ['status', 'number'],
+                <?php
+                while ($row = mysqli_fetch_array($resultFix)) {
+                  echo "['" . $row["status"] . "'," . $row["number"] . "],";
+                }
+                ?>
+              ]);
+              var options = {
+                title: 'Data Freelance',
+                //is3D:true,  
+                pieHole: 0.4
+              };
+              var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+              chart.draw(data, options);
+            }
+          </script>
+          </head>
 
-                function drawChart() {
-                  var data = google.visualization.arrayToDataTable([
-                    ['status', 'number'],
+          <body>
+            <br /><br />
+            <div style="width:900px;">
+              <h3 align="center">PT SINERGI INFORMATIKA SEMEN INDONESIA</h3>
+              <br />
+              <form action="" method="post">
+                <div class="form-group">
+                  <select name="search_freelance" class="form-control" required>
+                    <option selected disabled value="">-- Pilih Tipe Freelance --</option>
                     <?php
-                    while ($row = mysqli_fetch_array($resultFix)) {
-                      echo "['" . $row["status"] . "'," . $row["number"] . "],";
+                    while ($row = mysqli_fetch_array($listTipeFreelance)) {
+                      echo '<option value="' . $row["nama"] . '">' . $row["nama"] . '</option>';
                     }
                     ?>
-                  ]);
-                  var options = {
-                    title: 'Data Freelance',
-                    //is3D:true,  
-                    pieHole: 0.4
-                  };
-                  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                  chart.draw(data, options);
-                }
-              </script>
-            </head>
+                    <option value="All">All</option>
+                  </select>
+                </div>
+                <button type="submit" id="submit" class="btn btn-success btn-block">Proses</button>
+              </form>
+              <br>
+              <div id="piechart" style="width: 900px; height: 500px;"></div>
+            </div>
 
-            <body>
-              <br /><br />
-              <div style="width:900px;">
-                <h3 align="center">PT SINERGI INFORMATIKA SEMEN INDONESIA</h3>
-                <br />
-                <div id="piechart" style="width: 900px; height: 500px;"></div>
-              </div>
+            <br>
 
-              <div class="col-md-8">
-                <table class="table table-striped table-hover">
-                  <thead>
-                    <label>Aktif</label>
+            <div class="col-md-8">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <label>Aktif</label>
+                  <tr>
+                    <th>Nama Freelance</th>
+                    <th>Alamat Freelance</th>
+                    <th>No Tlp Freelance</th>
+                    <th>Project</th>
+                    <th>Salary</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>SPK</th>
+                    <th>Tipe Freelance</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($freelances as $row) : ?>
                     <tr>
-                      <th>Nama Freelance</th>
-                      <th>Alamat Freelance</th>
-                      <th>No Tlp Freelance</th>
-                      <th>Project</th>
-                      <th>Salary</th>
-                      <th>Start Date</th>
-                      <th>End Date</th>
-                      <th>SPK</th>
-                      <th>Tipe Freelance</th>
+                      <td><?= $row["nama"]; ?></td>
+                      <td><?= $row["alamat"]; ?></td>
+                      <td><?= $row["notlp"]; ?></td>
+                      <td><?= $row["project"]; ?></td>
+                      <td><?= $row["salary"]; ?></td>
+                      <td><?= $row["start_date"]; ?></td>
+                      <td><?= $row["end_date"]; ?></td>
+                      <td><?= $row["spk"]; ?></td>
+                      <td><?= $row["tipe_freelance"]; ?></td>
+                    <?php endforeach; ?>
+                </tbody>
+              </table>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <label>Non Aktif</label>
+                  <tr>
+                    <th>Nama Freelance</th>
+                    <th>Alamat Freelance</th>
+                    <th>No Tlp Freelance</th>
+                    <th>Project</th>
+                    <th>Salary</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>SPK</th>
+                    <th>Tipe Freelance</th>
 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($freelances as $row) : ?>
-                      <tr>
-                        <td><?= $row["nama"]; ?></td>
-                        <td><?= $row["alamat"]; ?></td>
-                        <td><?= $row["notlp"]; ?></td>
-                        <td><?= $row["project"]; ?></td>
-                        <td><?= $row["salary"]; ?></td>
-                        <td><?= $row["start_date"]; ?></td>
-                        <td><?= $row["end_date"]; ?></td>
-                        <td><?= $row["spk"]; ?></td>
-                        <td><?= $row["tipe_freelance"]; ?></td>
-                      <?php endforeach; ?>
-                  </tbody>
-                </table>
-                <table class="table table-striped table-hover">
-                  <thead>
-                    <label>Non Aktif</label>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($nonaktif as $row2) : ?>
                     <tr>
-                      <th>Nama Freelance</th>
-                      <th>Alamat Freelance</th>
-                      <th>No Tlp Freelance</th>
-                      <th>Project</th>
-                      <th>Salary</th>
-                      <th>Start Date</th>
-                      <th>End Date</th>
-                      <th>SPK</th>
-                      <th>Tipe Freelance</th>
+                      <td><?= $row2["nama"]; ?></td>
+                      <td><?= $row2["alamat"]; ?></td>
+                      <td><?= $row2["notlp"]; ?></td>
+                      <td><?= $row2["project"]; ?></td>
+                      <td><?= $row2["salary"]; ?></td>
+                      <td><?= $row2["start_date"]; ?></td>
+                      <td><?= $row2["end_date"]; ?></td>
+                      <td><?= $row2["spk"]; ?></td>
+                      <td><?= $row2["tipe_freelance"]; ?></td>
+                    <?php endforeach; ?>
+                </tbody>
+              </table>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <label>Kurang 2 Minggu</label>
+                  <tr>
+                    <th>Nama Freelance</th>
+                    <th>Alamat Freelance</th>
+                    <th>No Tlp Freelance</th>
+                    <th>Project</th>
+                    <th>Salary</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>SPK</th>
+                    <th>Tipe Freelance</th>
 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($nonaktif as $row2) : ?>
-                      <tr>
-                        <td><?= $row2["nama"]; ?></td>
-                        <td><?= $row2["alamat"]; ?></td>
-                        <td><?= $row2["notlp"]; ?></td>
-                        <td><?= $row2["project"]; ?></td>
-                        <td><?= $row2["salary"]; ?></td>
-                        <td><?= $row2["start_date"]; ?></td>
-                        <td><?= $row2["end_date"]; ?></td>
-                        <td><?= $row2["spk"]; ?></td>
-                        <td><?= $row2["tipe_freelance"]; ?></td>
-                      <?php endforeach; ?>
-                  </tbody>
-                </table>
-                <table class="table table-striped table-hover">
-                  <thead>
-                    <label>Kurang 2 Minggu</label>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($minggu2 as $row3) : ?>
                     <tr>
-                      <th>Nama Freelance</th>
-                      <th>Alamat Freelance</th>
-                      <th>No Tlp Freelance</th>
-                      <th>Project</th>
-                      <th>Salary</th>
-                      <th>Start Date</th>
-                      <th>End Date</th>
-                      <th>SPK</th>
-                      <th>Tipe Freelance</th>
+                      <td><?= $row3["nama"]; ?></td>
+                      <td><?= $row3["alamat"]; ?></td>
+                      <td><?= $row3["notlp"]; ?></td>
+                      <td><?= $row3["project"]; ?></td>
+                      <td><?= $row3["salary"]; ?></td>
+                      <td><?= $row3["start_date"]; ?></td>
+                      <td><?= $row3["end_date"]; ?></td>
+                      <td><?= $row3["spk"]; ?></td>
+                      <td><?= $row3["tipe_freelance"]; ?></td>
+                    <?php endforeach; ?>
+                </tbody>
+              </table>
 
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php foreach ($minggu2 as $row3) : ?>
-                      <tr>
-                        <td><?= $row3["nama"]; ?></td>
-                        <td><?= $row3["alamat"]; ?></td>
-                        <td><?= $row3["notlp"]; ?></td>
-                        <td><?= $row3["project"]; ?></td>
-                        <td><?= $row3["salary"]; ?></td>
-                        <td><?= $row3["start_date"]; ?></td>
-                        <td><?= $row3["end_date"]; ?></td>
-                        <td><?= $row3["spk"]; ?></td>
-                        <td><?= $row3["tipe_freelance"]; ?></td>
-                      <?php endforeach; ?>
-                  </tbody>
-                </table>
+              <script src="vendor/jquery/jquery.min.js"></script>
+              <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                <script src="vendor/jquery/jquery.min.js"></script>
-                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+              <!-- Core plugin JavaScript-->
+              <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                <!-- Core plugin JavaScript-->
-                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+              <!-- Custom scripts for all pages-->
+              <script src="js/sb-admin-2.min.js"></script>
 
-                <!-- Custom scripts for all pages-->
-                <script src="js/sb-admin-2.min.js"></script>
+              <!-- Page level plugins -->
+              <script src="vendor/chart.js/Chart.min.js"></script>
 
-                <!-- Page level plugins -->
-                <script src="vendor/chart.js/Chart.min.js"></script>
+              <!-- Page level custom scripts -->
+              <script src="js/demo/chart-area-demo.js"></script>
+              <script src="js/demo/chart-pie-demo.js"></script>
 
-                <!-- Page level custom scripts -->
-                <script src="js/demo/chart-area-demo.js"></script>
-                <script src="js/demo/chart-pie-demo.js"></script>
-
-            </body>
+          </body>
 
 </html>
