@@ -1,27 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Aintrightco &ndash; Distro & CLothing</title>
-    <link rel="icon" href="images/logo.png">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <title>Aintrightco &ndash; Distro & CLothing</title>
+  <link rel="icon" href="images/logo.png">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <body>
-  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
   <!-- SEARCH -->
   <div class="site-wrap">
     <div class="site-navbar bg-white py-2">
@@ -30,7 +30,7 @@
           <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
           <form action="#" method="post">
             <input type="text" class="form-control" placeholder="Masukkan Keyword Search . . .">
-          </form>  
+          </form>
         </div>
       </div>
 
@@ -78,9 +78,9 @@
         <div class="row">
           <div class="col-md-6 ml-auto order-md-2 align-self-start title-section mb-5 col-12 title-section text-center mb-5 col-12">
             <div class="site-block-cover-content">
-            <h1 class="site-navbar site-menu">Jacket & Hoodie</h1>
-            <h2>AINTRIGHTCO</h2>
-            <p><a href="shop.php" class="btn btn-black rounded-0">Belanja Sekarang</a></p>
+              <h1 class="site-navbar site-menu">Jacket & Hoodie</h1>
+              <h2>AINTRIGHTCO</h2>
+              <p><a href="shop.php" class="btn btn-black rounded-0">Belanja Sekarang</a></p>
             </div>
           </div>
           <div class="col-md-6 order-1 align-self-end">
@@ -99,7 +99,7 @@
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-6 item-entry mb-4">
-          <a href="#" class="product-item md-height bg-gray d-block">
+            <a href="#" class="product-item md-height bg-gray d-block">
               <img src="images/J1.png" alt="Image" class="img-fluid">
             </a>
             <h2 class="item-title"><a href="#">BLACK JACKET</a></h2>
@@ -338,67 +338,69 @@
             <button type="button" class="btn btn-success">Add to Cart</button>
           </div>
 
-          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <footer class="site-footer custom-border-top">
-      <div class="container">
-        <div class="row">
+  <footer class="site-footer custom-border-top">
+    <div class="container">
+      <div class="row">
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">Hint</h3>
-            <a href="shop.php" class="block-6">
-              <h3 class="font-weight-light  mb-0">Temukan clothing kesukaan mu di Aintrightco</h3>
-              <br>
-              <p>Build on &mdash; November, 2019</p>
-            </a>
-          </div>
-          <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
-            <div class="row">
-              <div class="col-md-12">
-                
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  
-                </ul>
-              </div>
-              <div class="col-md-6 col-lg-4">
-                <ul class="list-unstyled">
-                  
-                </ul>
-              </div>
+          <h3 class="footer-heading mb-4">Hint</h3>
+          <a href="shop.php" class="block-6">
+            <h3 class="font-weight-light  mb-0">Temukan clothing kesukaan mu di Aintrightco</h3>
+            <br>
+            <p>Build on &mdash; November, 2019</p>
+          </a>
+        </div>
+        <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
+          <div class="row">
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul class="list-unstyled">
+
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul class="list-unstyled">
+
+              </ul>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <ul class="list-unstyled">
+
+              </ul>
             </div>
           </div>
-          
+        </div>
+
         <div class="col-md-6 col-lg-3">
           <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Tentang Kami :</h3>
-              <ul class="list-unstyled">
-                <li class="address"><a href="api1.php">Jln.Kapten Rameli Lorong 1 No.47 BOJONEGORO</a></li>
-                <li class="phone"><a href="tel://">085336171248</a></li>
-                <li class="email">aintright2018@gmail.com </li>
-              </ul>
+            <h3 class="footer-heading mb-4">Tentang Kami :</h3>
+            <ul class="list-unstyled">
+              <li class="address"><a href="api1.php">Jln.Kapten Rameli Lorong 1 No.47 BOJONEGORO</a></li>
+              <li class="phone"><a href="tel://">085336171248</a></li>
+              <li class="email">aintright2018@gmail.com </li>
+            </ul>
           </div>
         </div>
 
-        </div>
       </div>
-      <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> by Yessy & Meutia | All rights reserved
-            </p>
-          </div>
-          
-        </div>
-    </footer>
+    </div>
+    <div class="row pt-5 mt-5 text-center">
+      <div class="col-md-12">
+        <p>
+          Copyright &copy;<script>
+            document.write(new Date().getFullYear());
+          </script> by Yessy & Meutia | All rights reserved
+        </p>
+      </div>
+
+    </div>
+  </footer>
   </div>
 
 
@@ -411,6 +413,7 @@
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-    
-  </body>
+
+</body>
+
 </html>

@@ -7,5 +7,3 @@ echo "<center><b>LOGGING OUT . . .<b>";
 header("location:index.php");
 
 exit;
-
-?>

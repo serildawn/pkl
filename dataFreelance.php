@@ -66,49 +66,50 @@ if (isset($_POST["ed_freelance"])) {
                 <label for="exampleInputEmail1">Nama Freelance</label>
                 <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan Nama Anda" required>
             </div>
-			<div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputEmail1">Alamat Freelance</label>
                 <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Masukkan Alamat Anda" required>
             </div>
-			<div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputEmail1">Nomer Telpon Freelance</label>
                 <input type="text" name="notlp" class="form-control" id="notlp" placeholder="Masukkan Nomer Telepon Anda" required>
             </div>
-			<div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputEmail1">Project</label>
                 <input type="text" name="project" class="form-control" id="project" placeholder="Masukkan Project Anda" required>
             </div>
-			<div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputEmail1">Salary</label>
                 <input type="text" name="salary" class="form-control" id="salary" placeholder="Masukkan Gaji Anda" required>
             </div>
-			<div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputEmail1">Start Date</label>
                 <input type="date" name="start_date" class="form-control" id="start_date" placeholder="Masukkan Start Date Anda" required>
             </div>
-			<div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputEmail1">End Date</label>
                 <input type="date" name="end_date" class="form-control" id="end_date" placeholder="Masukkan End Date Anda" required>
             </div>
-			<div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputEmail1">SPK</label>
-                <td><input type="radio" name="spk" value="Ada"/>Ada</td>  
-                <tr>  
-                <td><input type="radio" name="spk" value="Tidak"/>Tidak</td></tr>  
-                </tr>  
+                <td><input type="radio" name="spk" value="Ada" />Ada</td>
+                <tr>
+                    <td><input type="radio" name="spk" value="Tidak" />Tidak</td>
+                </tr>
+                </tr>
 
-                
-                </div>
-                <label>Tipe Freelance</label>
-               
-									
-                <select name="tipe_freelance" id="tipe_freelance">
-                   <option>Select One</option>
-                    <option>TW</option>
-                    <option>Programmer</option>
-                    <option>Admin</option>
-                </select>
-           
+
+            </div>
+            <label>Tipe Freelance</label>
+
+
+            <select name="tipe_freelance" id="tipe_freelance">
+                <option>Select One</option>
+                <option>TW</option>
+                <option>Programmer</option>
+                <option>Admin</option>
+            </select>
+
 
             <button type="submit" name="save" class="btn btn-primary btn-block">Save</button>
         </form>
@@ -120,13 +121,13 @@ if (isset($_POST["ed_freelance"])) {
                 <tr>
                     <th>Nama Freelance</th>
                     <th>Alamat Freelance</th>
-					<th>No Tlp Freelance</th>
+                    <th>No Tlp Freelance</th>
                     <th>Project</th>
-					<th>Salary</th>
-					<th>Start Date</th>
-					<th>End Date</th>
-					<th>SPK</th>
-					<th>Tipe Freelance</th>
+                    <th>Salary</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>SPK</th>
+                    <th>Tipe Freelance</th>
                     <th colspan="2">Aksi</th>
                 </tr>
             </thead>
@@ -136,12 +137,12 @@ if (isset($_POST["ed_freelance"])) {
                         <td><?= $row["nama"]; ?></td>
                         <td><?= $row["alamat"]; ?></td>
                         <td><?= $row["notlp"]; ?></td>
-						<td><?= $row["project"]; ?></td>
-						<td><?= $row["salary"]; ?></td>
-						<td><?= $row["start_date"]; ?></td>
-						<td><?= $row["end_date"]; ?></td>
-						<td><?= $row["spk"]; ?></td>
-						<td><?= $row["tipe_freelance"]; ?></td>
+                        <td><?= $row["project"]; ?></td>
+                        <td><?= $row["salary"]; ?></td>
+                        <td><?= $row["start_date"]; ?></td>
+                        <td><?= $row["end_date"]; ?></td>
+                        <td><?= $row["spk"]; ?></td>
+                        <td><?= $row["tipe_freelance"]; ?></td>
                         <td><a class="btn btn-sm btn-success" data-toggle="modal" href='#edit_user<?= $row["id_freelance"]; ?>'>Edit</a></td>
                         <td><a href="hapusfreelance.php?id=<?php echo $row["id_freelance"]; ?>">
                                 <i class="fas fa-trash-alt bg-danger text-white p-2 " onclick="return confirm('Apakah data Freelance dari <?php echo $row['nama']; ?> Ingin Dihapus')" data-toggle="tooltip" title="Delete">
@@ -189,22 +190,22 @@ if (isset($_POST["ed_freelance"])) {
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">SPK</label>
-                                            <input type="radio" name="spk" id="spk"  value="Ada" required value= "<?= $row["spk"] ?>">
-                                            <input type="radio" name="spk"  id="spk"  value="Tidak" required value="<?= $row["spk"] ?>">
+                                            <input type="radio" name="spk" id="spk" value="Ada" required value="<?= $row["spk"] ?>">
+                                            <input type="radio" name="spk" id="spk" value="Tidak" required value="<?= $row["spk"] ?>">
                                         </div>
                                         <label for="">Tipe Freelance</label>
-						                <select name="tipe_freelance" id="tipe_freelance" class="form-control">
-							            <option value="default">Select one</option>
-															<option value="TW">TW</option>
-															<option value="Programmer">Programmer</option>
-															<option value="Admin">Accessories</option>
-													</select>
+                                        <select name="tipe_freelance" id="tipe_freelance" class="form-control">
+                                            <option value="default">Select one</option>
+                                            <option value="TW">TW</option>
+                                            <option value="Programmer">Programmer</option>
+                                            <option value="Admin">Accessories</option>
+                                        </select>
                                         <!-- <div class="form-group">
                                             <label for="exampleInputEmail1">Tipe Freelance</label>
                                             <input type="text" name="tipe_freelance" class="form-control" id="tipe_freelance" placeholder="Masukkan Start Date Anda" required value="<?= $row["tipe_freelance"] ?>">
                                         </div> -->
-										
-                
+
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>

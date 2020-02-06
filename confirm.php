@@ -4,24 +4,19 @@ require 'fungsi.php';
 
 //Menggunakan method get untuk mengambil id yang telah terseleksi oleh user dan dimasukkan
 //kedalam variabel baru yaitu $id
-$id=$_GET["id"];
+$id = $_GET["id"];
 
-if(confirm ($id)>0)
-{
+if (confirm($id) > 0) {
     echo "
     <script>
         
         history.back(self);
     </script>";
-}
-else
-{
+} else {
     echo "
     <script>
-       
         history.back(self);
-    </script>";    
+    </script>";
     echo "<br>";
     echo mysqli_error($conn);
 }
-?>

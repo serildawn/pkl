@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2020 at 02:15 AM
+-- Generation Time: Feb 01, 2020 at 04:14 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -217,7 +217,9 @@ CREATE TABLE `freelance` (
 INSERT INTO `freelance` (`id_freelance`, `nama`, `alamat`, `notlp`, `project`, `salary`, `start_date`, `end_date`, `spk`, `tipe_freelance`) VALUES
 (10, 'bala', 'jalan surabya21q', '0987654321', 'book', '2000000', '2020-01-05', '2020-02-29', 'Ada', 'Programmer'),
 (11, 'bedes', 'jl sda', '08575555555', 'monyet', '2500000', '2020-02-01', '2020-03-31', 'Ada', 'Admin'),
-(12, 'fungisida', 'jalan madiun', '082125414141', 'bluder', '1500000', '2020-01-01', '2020-03-31', 'Tidak', 'TW');
+(12, 'fungisida', 'jalan madiun', '082125414141', 'bluder', '1500000', '2020-01-01', '2020-03-31', 'Tidak', 'TW'),
+(13, 'adit', 'jalan gadang', '082125422222', 'malang', '2250000', '2020-01-01', '2020-01-04', 'Tidak', 'Programmer'),
+(15, 'daps', 'jalan semanggi', '0987654321', 'tidur', '2500000', '2020-01-01', '2020-02-04', 'Tidak', 'Programmer');
 
 -- --------------------------------------------------------
 
@@ -417,7 +419,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `freelance`
 --
 ALTER TABLE `freelance`
-  MODIFY `id_freelance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_freelance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tipe_freelance`

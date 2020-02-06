@@ -54,10 +54,10 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-					<a href="../logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                </li>  
+                    <a href="../logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                </li>
             </ul>
-            
+
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -65,10 +65,10 @@
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
                             </div>
                             <!-- /input-group -->
                         </li>
@@ -81,8 +81,8 @@
                                 <li>
                                     <a href="../Tabel/dataPemesanan.php">Data Pemesanan</a>
                                 </li>
-                                
-                               
+
+
                             </ul>
                         </li>
                         <li>
@@ -118,29 +118,29 @@
                             Data Paket
                         </div>
                         <div class="panel-body">
-						    <form action="simpanPaket.php" method="post" name="form1" enctype="multipart/form-data">
-								<div class="row">
-									<div class="col-lg-6">
-											<div class="form-group">
-												<label>Nama Paket</label>
-												<input type="text" name="nama" class="form-control" placeholder="Nama Paket">
-                                            </div>
-                                            <div class="form-group">
-												<label>Deskripsi Paket</label>
-												<input type="text" name="deskripsi" class="form-control" placeholder="Deskripsi Paket">
-                                            </div>
-											<div class="form-group">
-												<label>Harga Paket</label>
-												<input type="text" name="harga" class="form-control" placeholder="Harga Paket">
-                                            </div>
-                                            <div class="form-group">
-												<label>Gambar</label>
-												<input type="file" name="gambar" class="form-control" required>
-											</div>
-									<input type="submit" name="Input" class="btn btn-primary" value="Submit"/>
-									</div>
-								</div>
-							</form>
+                            <form action="simpanPaket.php" method="post" name="form1" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Nama Paket</label>
+                                            <input type="text" name="nama" class="form-control" placeholder="Nama Paket">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Deskripsi Paket</label>
+                                            <input type="text" name="deskripsi" class="form-control" placeholder="Deskripsi Paket">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Harga Paket</label>
+                                            <input type="text" name="harga" class="form-control" placeholder="Harga Paket">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Gambar</label>
+                                            <input type="file" name="gambar" class="form-control" required>
+                                        </div>
+                                        <input type="submit" name="Input" class="btn btn-primary" value="Submit" />
+                                    </div>
+                                </div>
+                            </form>
                             <!-- /.row (nested) -->
                         </div>
                         <!-- /.panel-body -->
@@ -152,23 +152,23 @@
             <!-- /.row -->
         </div>
 
-        
-    <!-- jQuery -->
-    <script src="../admin/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- jQuery -->
+        <script src="../admin/vendor/jquery/jquery.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../admin/vendor/metisMenu/metisMenu.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../admin/vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="../admin/vendor/raphael/raphael.min.js"></script>
-    <script src="../admin/vendor/morrisjs/morris.min.js"></script>
-    <script src="../admin/data/morris-data.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../admin/vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="../admin/dist/js/sb-admin-2.js"></script>
+        <!-- Morris Charts JavaScript -->
+        <script src="../admin/vendor/raphael/raphael.min.js"></script>
+        <script src="../admin/vendor/morrisjs/morris.min.js"></script>
+        <script src="../admin/data/morris-data.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../admin/dist/js/sb-admin-2.js"></script>
 
 </body>
 

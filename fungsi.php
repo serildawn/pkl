@@ -368,4 +368,3 @@ function editActivity($data)
         // kita return nama filenya agar dapat masuk ke $gambar=$upload() pada function tambah
         return $nama_file;
     }
-?>    

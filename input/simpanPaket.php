@@ -44,5 +44,3 @@
                 header("Location: inputBuku.php?error=$error");
             }
         }
-    
-?>

@@ -1,94 +1,91 @@
 <?php
- session_start();
- require 'fungsi.php';
+session_start();
+require 'fungsi.php';
 
- $ca = querycart("SELECT * FROM addcart");
- $idcus = $_SESSION["idcus"];
- $barang = query("SELECT * FROM barang");
+$ca = querycart("SELECT * FROM addcart");
+$idcus = $_SESSION["idcus"];
+$barang = query("SELECT * FROM barang");
 
- $cart = query("SELECT * FROM addcart where idcus = '$idcus'");
- $cart1 = query("SELECT sum(harga) as tot_harga FROM addcart where idcus = '$idcus'");
- $carth = query("SELECT harga as sub_harga FROM addcart where idcus = '$idcus'");
- $count = query("SELECT COUNT(*) as jumlah FROM addcart WHERE idcus = '$idcus'");
- $cus = query("SELECT * FROM customer WHERE idcus = '$idcus'");
+$cart = query("SELECT * FROM addcart where idcus = '$idcus'");
+$cart1 = query("SELECT sum(harga) as tot_harga FROM addcart where idcus = '$idcus'");
+$carth = query("SELECT harga as sub_harga FROM addcart where idcus = '$idcus'");
+$count = query("SELECT COUNT(*) as jumlah FROM addcart WHERE idcus = '$idcus'");
+$cus = query("SELECT * FROM customer WHERE idcus = '$idcus'");
 
- if (isset($_POST["ca"]))
- {
-     //cari adalah function cari dari keyword adalah name dari inputan text
-     $ca = caricart($_POST["keyword"]);
- }
+if (isset($_POST["ca"])) {
+  //cari adalah function cari dari keyword adalah name dari inputan text
+  $ca = caricart($_POST["keyword"]);
+}
 
 ///popup
-foreach ($count as $c) 
-  {
-    $popup = ($c["jumlah"]);
-  } 
+foreach ($count as $c) {
+  $popup = ($c["jumlah"]);
+}
 
 ///total
-foreach ($cart1 as $s)
-{
+foreach ($cart1 as $s) {
   $subtot = $s["tot_harga"];
   $total = $subtot;
 }
 
-if (isset($_POST["edit"]))
-{
-  foreach ($cart as $x)
-  {
-    
-    $jml = $_POST["editjumlah"]; 
+if (isset($_POST["edit"])) {
+  foreach ($cart as $x) {
+
+    $jml = $_POST["editjumlah"];
     $hargatotal = $jml * $x["hargasatuan"];
   }
-    $query = "UPDATE addcart SET jumlah = '$jml', harga = '$hargatotal' WHERE idcus = '$idcus'";
-    mysqli_query($conn,$query);
+  $query = "UPDATE addcart SET jumlah = '$jml', harga = '$hargatotal' WHERE idcus = '$idcus'";
+  mysqli_query($conn, $query);
 
-    header("location:cart.php");
-
+  header("location:cart.php");
 }
 
-if(isset($_POST["continue"]))
-{
+if (isset($_POST["continue"])) {
   header("location:all.php");
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
   <title>Aintrightco &ndash; Distro & CLothing</title>
-    <link rel="icon" href="images/logo.png">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="images/logo.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
 
-    <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/style.css">
-    
-  </head>
-  <body>
-  
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
   <div class="site-wrap">
-    
+
 
     <div class="site-navbar bg-white py-2">
-    <h3><font color="#000000"><span class="icon-user-circle-o"></span>  Selamat Datang : <?php echo $_SESSION["nama"]; ?></font></h3>
+      <h3>
+        <font color="#000000"><span class="icon-user-circle-o"></span> Selamat Datang : <?php echo $_SESSION["nama"]; ?></font>
+      </h3>
       <div class="search-wrap">
         <div class="container">
           <form action="#" method="post">
             <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
-            <input  type="text" name="keyword" class="form-control" placeholder="Search . . ." autocomplete="off" required="required">
+            <input type="text" name="keyword" class="form-control" placeholder="Search . . ." autocomplete="off" required="required">
             <button class="btn btn-link" type="submit" name="ca"></button>
-          </form>  
+          </form>
         </div>
       </div>
 
@@ -96,13 +93,13 @@ if(isset($_POST["continue"]))
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a  class="js-logo-clone">AINTRIGHTCO</a>
+              <a class="js-logo-clone">AINTRIGHTCO</a>
             </div>
           </div>
-        
+
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
-            <ul class="site-menu js-clone-nav d-none d-lg-block">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li><a href="all.php">Catalog Product</a></li>
                 <li><a href="contact.php">Contact</a></li>
                 <li><a href="tracking.php">Pesanan Saya</a></li>
@@ -115,14 +112,14 @@ if(isset($_POST["continue"]))
             <a href="#" class="icons-btn d-inline-block"><span class="icon-heart-o"></span></a>
             <a href="cart.php" class="icons-btn d-inline-block bag">
               <span class="icon-shopping-bag"></span>
-              <span class="number"><?php echo $popup?></span>
+              <span class="number"><?php echo $popup ?></span>
             </a>
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
           </div>
         </div>
       </div>
     </div>
-    
+
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
@@ -131,7 +128,7 @@ if(isset($_POST["continue"]))
       </div>
     </div>
 
-<!-- <form action="" method="post"> -->
+    <!-- <form action="" method="post"> -->
     <div class="site-section">
       <div class="container">
         <div class="row mb-5">
@@ -151,43 +148,42 @@ if(isset($_POST["continue"]))
                   </tr>
                 </thead>
                 <tbody>
-                <?php foreach($cart as $row):?>
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img src="images/<?= $row["gambar"]; ?>" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black"><?= $row["jenis"]; ?></h2>
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black"><?= $row["warna"]; ?></h2>
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black"><?= $row["size"]; ?></h2>
-                    </td>
-                    <td  class="product-name"> 
-                    <h2 class="h5 text-black">Rp. <?= $row["hargasatuan"]; ?></h2>
-                    </td>
-                    <td class="product-name">
-                    
-                    <input type="number" name="editjumlah" id="input" class="form-control text-center h5 text-black" required value="<?= $row["jumlah"]; ?>" >
-                    
-                    </td>
-                    <td  class="product-name"> 
-                    <h2 class="h5 text-black">Rp. <?= $row["harga"]; ?></h2>
-                    </td>
-                    
-                    <td><a class="btn btn-primary height-auto btn-sm" 
-                    href="hapuscart.php ?id=<?php echo $row["idadd"];?>"onclick="return confirm('Apakah Cart akan dihapus?')">X</a></td>
-                  </tr>
-                  <?php endforeach;?>
+                  <?php foreach ($cart as $row) : ?>
+                    <tr>
+                      <td class="product-thumbnail">
+                        <img src="images/<?= $row["gambar"]; ?>" alt="Image" class="img-fluid">
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black"><?= $row["jenis"]; ?></h2>
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black"><?= $row["warna"]; ?></h2>
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black"><?= $row["size"]; ?></h2>
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black">Rp. <?= $row["hargasatuan"]; ?></h2>
+                      </td>
+                      <td class="product-name">
+
+                        <input type="number" name="editjumlah" id="input" class="form-control text-center h5 text-black" required value="<?= $row["jumlah"]; ?>">
+
+                      </td>
+                      <td class="product-name">
+                        <h2 class="h5 text-black">Rp. <?= $row["harga"]; ?></h2>
+                      </td>
+
+                      <td><a class="btn btn-primary height-auto btn-sm" href="hapuscart.php ?id=<?php echo $row["idadd"]; ?>" onclick="return confirm('Apakah Cart akan dihapus?')">X</a></td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
-            
-          <!-- </form> -->
+
+            <!-- </form> -->
         </div>
-        
+
         <div class="row">
           <div class="col-md-6">
             <div class="row mb-5">
@@ -197,22 +193,22 @@ if(isset($_POST["continue"]))
               <div class="col-md-6">
                 <button class="btn btn-outline-primary btn-sm btn-block" name="continue">Continue Shopping</button>
               </div>
-            
+
               <!-- <div class="col-md-6 mb-3 mb-md-0">
                 <button type="submit" name="edit" class="btn btn-primary btn-sm btn-block">Update Cart</button>
               </div> -->
-              
+
               <button type="submit" name="edit" class="btn btn-danger">Simpan Perubahan</button>
-                
+
             </div>
           </div>
-        
+
           </form>
-          
-          
-          
-          
-          
+
+
+
+
+
           <div class="col-md-6 pl-5">
             <div class="row justify-content-end">
               <div class="col-md-7">
@@ -246,7 +242,7 @@ if(isset($_POST["continue"]))
     <footer class="site-footer custom-border-top">
       <div class="container">
         <div class="row">
-        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 icons">
+          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 icons">
             <h3 class="footer-heading mb-4">Hint</h3>
             <a class="block-6">
               <h3 class="font-weight-light  mb-0">Kunjungi Instagram Resmi AINTRIGHTCO</h3>
@@ -260,50 +256,52 @@ if(isset($_POST["continue"]))
           <div class="col-lg-5 ml-auto mb-5 mb-lg-0">
             <div class="row">
               <div class="col-md-12">
-                
+
               </div>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  
+
                 </ul>
               </div>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  
+
                 </ul>
               </div>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  
+
                 </ul>
               </div>
             </div>
           </div>
-          
+
           <div class="col-md-6 col-lg-3">
-          <div class="block-5 mb-5">
+            <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Tentang Kami :</h3>
               <ul class="list-unstyled">
                 <li class="address"><a href="api1.php">Jln.Kapten Rameli Lorong 1 No.47 BOJONEGORO</a></li>
                 <li class="phone"><a href="tel://">085336171248</a></li>
                 <li class="email">aintright2018@gmail.com </li>
               </ul>
+            </div>
+          </div>
+
+          <div class="row pt-5 mt-5 text-center">
+            <div class="col-md-12">
+              <p>
+                Copyright &copy;<script>
+                  document.write(new Date().getFullYear());
+                </script> by Yessy & Meutia| All rights reserved
+              </p>
+            </div>
           </div>
         </div>
 
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> by Yessy & Meutia| All rights reserved
-            </p>
-          </div>
       </div>
-        </div>
-        
-      </div>
-      
+
     </footer>
-    
+
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
@@ -315,6 +313,7 @@ if(isset($_POST["continue"]))
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-    
-  </body>
+
+</body>
+
 </html>

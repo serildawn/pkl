@@ -103,8 +103,8 @@ if (isset($_POST["ed_act"])) {
                                 <i class="fas fa-trash-alt bg-danger text-white p-2 " onclick="return confirm('Apakah Aktifitas dari <?php echo $row['nama']; ?> Ingin Dihapus')" data-toggle="tooltip" title="Delete">
                     </tr>
                     <form action="" method="post"> -->
-                        <!-- Modal Edit -->
-                        <!-- <div class="modal fade" id="edit_user<?= $row["id_aktifitas"] ?>">
+    <!-- Modal Edit -->
+    <!-- <div class="modal fade" id="edit_user<?= $row["id_aktifitas"] ?>">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

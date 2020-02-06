@@ -11,14 +11,12 @@
 </head>
 
 <body>
-        <div class="container-fluid" class="login100-form validate-form p-b-33 p-t-5" method="post">
-            <div class="">
-                <p data-toggle="modal" data-target="#mydaftar"><a href="#"><span
-                            class="glyphicon glyphicon-user"></span> Daftar</a></p>
-                <p data-toggle="modal" data-target="#mylogin"><a href="#"><span
-                            class="glyphicon glyphicon-log-in"></span> Login</a></p>
-            </div>
+    <div class="container-fluid" class="login100-form validate-form p-b-33 p-t-5" method="post">
+        <div class="">
+            <p data-toggle="modal" data-target="#mydaftar"><a href="#"><span class="glyphicon glyphicon-user"></span> Daftar</a></p>
+            <p data-toggle="modal" data-target="#mylogin"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></p>
         </div>
+    </div>
     <!-- Modal daftar -->
     <div id="mydaftar" class="modal fade" role="dialog">
         <div class="modal-dialog">

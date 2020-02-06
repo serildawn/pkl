@@ -29,6 +29,7 @@ if(isset($_POST["tipe_freelance"]))
 $query2 = mysqli_query($con, "SELECT year FROM freelance GROUP BY tipe_freelance ASC");
 $freelance = mysqli_query($con, "SELECT * FROM freelance ORDER BY id_freelance ASC");
 $freelances =  mysqli_query($con, "SELECT * FROM freelance where now() < end_date - INTERVAL 2 WEEK");
+<<<<<<< HEAD
 $nonaktif = mysqli_query($con, "SELECT * FROM freelance where end_date <= now()");
 $minggu2 = mysqli_query($con, "SELECT * FROM freelance WHERE end_date BETWEEN now() AND CURDATE() + INTERVAL 14 DAY");
 $connect = mysqli_connect("localhost", "root", "", "morfeen");
@@ -48,6 +49,26 @@ $result = mysqli_query($connect, $query);
 $resultFix = mysqli_query($connect, $queryFix);
 
 
+=======
+$nonaktif = mysqli_query($con, "SELECT * FROM freelance where now() > end_date");
+$minggu2 = mysqli_query($con, "SELECT * FROM freelance
+WHERE end_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 14 DAY");
+$connect = mysqli_connect("localhost", "root", "", "morfeen");
+$query = "SELECT start_date, end_date, count(*) as number FROM freelance group by id_freelance";
+
+$queryFix = "SELECT
+              CASE
+                WHEN now() < end_date - INTERVAL 2 WEEK THEN 'Aktif'
+                WHEN end_date BETWEEN CURDATE() AND CURDATE() + INTERVAL 14 DAY THEN 'Kurang 2 Minggu'
+                WHEN now() > end_date THEN 'Non-Aktif'
+              END as status
+              , COUNT(*) as number
+              FROM morfeen.freelance f 
+              GROUP BY status";
+
+$result = mysqli_query($connect, $query);
+$resultFix = mysqli_query($connect, $queryFix);
+>>>>>>> 3f96ec27901d5bd7abff7fe108b14f225401d0ba
 ?>
 
 
@@ -246,7 +267,14 @@ $resultFix = mysqli_query($connect, $queryFix);
         <div class="container-fluid">
 
           <!-- Page Heading -->
+<<<<<<< HEAD
          
+=======
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+          </div>
+>>>>>>> 3f96ec27901d5bd7abff7fe108b14f225401d0ba
 
           <!-- Content Row -->
           <div class="row">
@@ -255,6 +283,7 @@ $resultFix = mysqli_query($connect, $queryFix);
 
             <head>
               <title>PT SINERGI INFORMATIKA SEMEN INDONESIA</title>
+<<<<<<< HEAD
               <div class="col-md-3">
                             <select name="tipe_freelance" class="form-control" id="tipe_freelance">
                                 <option value="">Select Type Freelance</option>
@@ -266,6 +295,8 @@ $resultFix = mysqli_query($connect, $queryFix);
                             ?>
                             </select>
                         </div>
+=======
+>>>>>>> 3f96ec27901d5bd7abff7fe108b14f225401d0ba
               <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
               <script type="text/javascript">
                 google.charts.load('current', {

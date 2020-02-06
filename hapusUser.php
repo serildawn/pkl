@@ -1,5 +1,5 @@
 <?php
- require 'fungsi.php';
+require 'fungsi.php';
 include 'connect.php';
 
 $id = $_GET["id"];
